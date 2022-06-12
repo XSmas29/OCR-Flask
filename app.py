@@ -7,7 +7,7 @@ import cv2
 import keras_ocr
 
 app = Flask(__name__)
-app.debug = True
+app.debug = False
 uploads_dir = os.path.join(app.instance_path, 'uploads')
 
 ocr_th = 0.3
@@ -94,4 +94,4 @@ def recognize_text(results, frame):
     return list_result
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
