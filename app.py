@@ -26,10 +26,10 @@ def hello_world():
 def detect():
     if not request.method == "POST":
         return
-    video = request.files['video']
-    video.save(os.path.join(uploads_dir, secure_filename(video.filename)))
-    print(video)
-    # output = subprocess.run(['python', 'ocr.py','--image', os.path.join(uploads_dir, secure_filename(video.filename))], shell=True, stdout=subprocess.PIPE) #
+    img = request.files['img']
+    img.save(os.path.join(uploads_dir, secure_filename(img.filename)))
+    print(img)
+    # output = subprocess.run(['python', 'ocr.py','--image', os.path.join(uploads_dir, secure_filename(img.filename))], shell=True, stdout=subprocess.PIPE) #
     # lines = output.stdout.splitlines()
     # result = []
     # for line in lines:
@@ -41,10 +41,10 @@ def detect():
     #                 tuple = list(ast.literal_eval(strline))
     #                 result.append(tuple)
     # return json.dumps(result)
-    # subprocess.run(['python', 'detect.py', '--hide-conf', '--hide-labels', '--conf-thres', '0.40', '--save-crop','--save-txt', '--weights', 'yolov5sV2_epoch_69.pt', '--source', os.path.join(uploads_dir, secure_filename(video.filename))], shell=True)
-    # obj = secure_filename(video.filename)
+    # subprocess.run(['python', 'detect.py', '--hide-conf', '--hide-labels', '--conf-thres', '0.40', '--save-crop','--save-txt', '--weights', 'yolov5sV2_epoch_69.pt', '--source', os.path.join(uploads_dir, secure_filename(img.filename))], shell=True)
+    # obj = secure_filename(img.filename)
     # return obj
-    list_result = OCR(os.path.join(uploads_dir, secure_filename(video.filename)))
+    list_result = OCR(os.path.join(uploads_dir, secure_filename(img.filename)))
     print("result:")
     json_result = jsonify(
         {
